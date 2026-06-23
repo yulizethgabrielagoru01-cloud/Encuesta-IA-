@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuestas IA - IETI</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: linear-gradient(135deg, #0f2027, #2c3e50); 
+            color: white; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 { 
+            color: #78c0e0; 
+            margin-top: 80px; 
+            margin-bottom: 40px; 
+            text-align: center; 
+        }
+        
+        .container-tarjetas {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .tarjeta { 
+            background: rgba(255,255,255,0.05); 
+            padding: 30px; 
+            border-radius: 20px; 
+            width: 100%; 
+            max-width: 400px; 
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .tarjeta:hover { transform: translateY(-10px); background: rgba(255,255,255,0.1); }
+        
+        .btn { 
+            display: inline-block; 
+            padding: 15px 30px; 
+            background: #78c0e0; 
+            color: #2c3e50; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        /* --- NUEVOS ESTILOS PARA LA SELECCIÓN DE GRADOS --- */
+        .seccion-grados {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: none; /* Oculto por defecto */
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .seccion-grados h3 {
+            font-size: 16px;
+            color: #78c0e0;
+            margin-bottom: 15px;
+        }
+
+        .grid-grados {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .btn-grado {
+            display: block;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-grado:hover {
+            background: #78c0e0;
+            color: #2c3e50;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Encuestas sobre Inteligencia Artificial</h1>
+
+    <div class="container-tarjetas">
+        <!-- TARJETA MAESTROS -->
+        <div class="tarjeta">
+            <h2>Maestros</h2>
+            <p>Tu opinión sobre la integración de la IA en la docencia.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSftMHFvnnqfo5ljlZ1e37kdOYZGo9H8p0rFotZE26qez9gj6w/viewform" target="_blank" class="btn">Responder Encuesta</a>
+        </div>
+
+        <!-- TARJETA ESTUDIANTES -->
+        <div class="tarjeta">
+            <h2>Estudiantes</h2>
+            <p>Tu opinión sobre el uso de la IA en tus actividades escolares.</p>
+            
+            <!-- Cambiamos el enlace directo por un botón que despliega los grados -->
+            <button onclick="mostrarGrados()" class="btn" id="btn-estudiantes">Responder Encuesta</button>
+
+            <!-- Contenedor dinámico de grados (Se activa con JavaScript) -->
+            <div id="contenedor-grados" class="seccion-grados">
+                <h3>Selecciona tu grado para iniciar:</h3>
+                <div class="grid-grados">
+                    <!-- Todos los botones apuntan a tu enlace único de estudiantes -->
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4B2zw44So8kOwD0iS6Map0_R_8uwntNy1vkI8I-ij3oNUwg/viewform" target="_blank" class="btn-grado">6-2</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4B2zw44So8kOwD0iS6Map0_R_8uwntNy1vkI8I-ij3oNUwg/viewform" target="_blank" class="btn-grado">7-1</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4B2zw44So8kOwD0iS6Map0_R_8uwntNy1vkI8I-ij3oNUwg/viewform" target="_blank" class="btn-grado">8-4</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4B2zw44So8kOwD0iS6Map0_R_8uwntNy1vkI8I-ij3oNUwg/viewform" target="_blank" class="btn-grado">9-1</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4B2zw44So8kOwD0iS6Map0_R_8uwntNy1vkI8I-ij3oNUwg/viewform" target="_blank" class="btn-grado">10-1</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4B2zw44So8kOwD0iS6Map0_R_8uwntNy1vkI8I-ij3oNUwg/viewform" target="_blank" class="btn-grado">11-2</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE JAVASCRIPT PARA CONTROLAR LA ANIMACIÓN -->
+    <script>
+        function mostrarGrados() {
+            var contenedor = document.getElementById("contenedor-grados");
+            var botonPrincipal = document.getElementById("btn-estudiantes");
+            
+            // Si está oculto, lo muestra y oculta el botón principal de forma estética
+            if (contenedor.style.display === "none" || contenedor.style.display === "") {
+                contenedor.style.display = "block";
+                botonPrincipal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
